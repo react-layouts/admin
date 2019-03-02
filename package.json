@@ -1,11 +1,15 @@
 {
   "name": "@react-layouts/admin",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-layouts/admin.git"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build-examples": "react-scripts build",
@@ -24,5 +28,11 @@
   "peerDependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

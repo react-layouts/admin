@@ -5,6 +5,7 @@ import "./AdminLayout.css";
 
 function AdminLayout(props) {
   const {
+    id,
     header,
     sidebar,
     nav,
@@ -14,7 +15,8 @@ function AdminLayout(props) {
     mobileHeaderHeight = "90px",
     sidebarWidth = "250px",
     mobileSidebarWidth = "250px",
-    breakpoint = "768px"
+    breakpoint = "768px",
+    ...other
   } = props;
 
   const isMobile = useMedia([`(min-width: ${breakpoint})`], [false], true);
@@ -113,7 +115,7 @@ function AdminLayout(props) {
   );
 
   return (
-    <div className={`admin-layout${isMobile ? " admin-layout--mobile" : ""}`}>
+    <div id={id} className={`admin-layout${isMobile ? " admin-layout--mobile" : ""}`}>
       <input
         type="checkbox"
         id="toggle-sidebar"
@@ -122,21 +124,21 @@ function AdminLayout(props) {
       />
       <section className="admin-layout__wrap" style={wrapStyles}>
         <section className="admin-layout__body" style={bodyStyles}>
-          <nav className="admin-layout__nav">{nav}</nav>
+          <nav className="admin-layout__nav">{React.isValidElement(nav) && React.cloneElement(nav, {...other})}</nav>
           <main className="admin-layout__content" style={mainStyles}>
-            {children}
+            {React.isValidElement(children) && React.cloneElement(children, {...other})}
           </main>
-          <footer className="admin-layout__footer">{footer}</footer>
+          <footer className="admin-layout__footer">{React.isValidElement(footer) && React.cloneElement(footer, {...other})}</footer>
         </section>
         <aside className="admin-layout__sidebar" style={asideStyles}>
-          {sidebar}
+          {React.isValidElement(sidebar) && React.cloneElement(sidebar, {...other})}
         </aside>
         <header className="admin-layout__header" style={headerStyles}>
           <div>
             <label htmlFor="toggle-sidebar" style={toggleStyles}>
               ☰
             </label>
-            {header}
+            {React.isValidElement(header) && React.cloneElement(header, {...other})}
           </div>
         </header>
       </section>

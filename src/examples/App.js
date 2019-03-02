@@ -1,8 +1,8 @@
 import React from "react";
 import { AdminLayout } from "../lib";
 
-function Nav() {
-  return <div>Nav Section</div>;
+function Nav(props) {
+  return <div>Nav Section - {props.message}</div>;
 }
 
 function Sidebar() {
@@ -44,6 +44,8 @@ function Lorem() {
 function App() {
   return (
     <AdminLayout
+      id="layoutOne"
+      message="Props are passed to layout components automatically"
       header={<span>&nbsp;Header Section</span>}
       footer={<Footer />}
       sidebar={<Sidebar />}

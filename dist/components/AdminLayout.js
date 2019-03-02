@@ -1,9 +1,11 @@
+import _objectWithoutProperties from "/c/users/johnr/Development/github/layouts/admin/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties";
 import React from "react";
 import useMedia from "../hooks/useMedia";
 import "./AdminLayout.css";
 
 function AdminLayout(props) {
-  var header = props.header,
+  var id = props.id,
+      header = props.header,
       sidebar = props.sidebar,
       nav = props.nav,
       footer = props.footer,
@@ -17,7 +19,9 @@ function AdminLayout(props) {
       _props$mobileSidebarW = props.mobileSidebarWidth,
       mobileSidebarWidth = _props$mobileSidebarW === void 0 ? "250px" : _props$mobileSidebarW,
       _props$breakpoint = props.breakpoint,
-      breakpoint = _props$breakpoint === void 0 ? "768px" : _props$breakpoint;
+      breakpoint = _props$breakpoint === void 0 ? "768px" : _props$breakpoint,
+      other = _objectWithoutProperties(props, ["id", "header", "sidebar", "nav", "footer", "children", "headerHeight", "mobileHeaderHeight", "sidebarWidth", "mobileSidebarWidth", "breakpoint"]);
+
   var isMobile = useMedia(["(min-width: ".concat(breakpoint, ")")], [false], true);
   var dimensions = {
     sidebarWidth: typeof sidebarWidth === 'function' ? sidebarWidth(isMobile) : sidebarWidth,
@@ -90,6 +94,7 @@ function AdminLayout(props) {
     flex: "none"
   });
   return React.createElement("div", {
+    id: id,
     className: "admin-layout".concat(isMobile ? " admin-layout--mobile" : "")
   }, React.createElement("input", {
     type: "checkbox",
@@ -106,21 +111,21 @@ function AdminLayout(props) {
     style: bodyStyles
   }, React.createElement("nav", {
     className: "admin-layout__nav"
-  }, nav), React.createElement("main", {
+  }, React.isValidElement(nav) && React.cloneElement(nav, Object.assign({}, other))), React.createElement("main", {
     className: "admin-layout__content",
     style: mainStyles
-  }, children), React.createElement("footer", {
+  }, React.isValidElement(children) && React.cloneElement(children, Object.assign({}, other))), React.createElement("footer", {
     className: "admin-layout__footer"
-  }, footer)), React.createElement("aside", {
+  }, React.isValidElement(footer) && React.cloneElement(footer, Object.assign({}, other)))), React.createElement("aside", {
     className: "admin-layout__sidebar",
     style: asideStyles
-  }, sidebar), React.createElement("header", {
+  }, React.isValidElement(sidebar) && React.cloneElement(sidebar, Object.assign({}, other))), React.createElement("header", {
     className: "admin-layout__header",
     style: headerStyles
   }, React.createElement("div", null, React.createElement("label", {
     htmlFor: "toggle-sidebar",
     style: toggleStyles
-  }, "\u2630"), header))));
+  }, "\u2630"), React.isValidElement(header) && React.cloneElement(header, Object.assign({}, other))))));
 }
 
 export default AdminLayout;
