@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .admin-layout__header, .admin-layout__sidebar, .admin-layout__body, .admin-layout__nav, .admin-layout__content, .admin-layout__footer {
+    padding: 20px;
+    border: 1px solid silver;
+    background: white;
+  }
+  .admin-layout__header > div, .admin-layout__sidebar > div, .admin-layout__body > div, .admin-layout__nav > div, .admin-layout__content > div, .admin-layout__footer > div {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .admin-layout__header {
+    border-color: yellowgreen;
+  }
+  .admin-layout__header:after, .admin-layout__header > div {
+    background: yellowgreen;
+  }
+  .admin-layout__header ul,
+  .admin-layout__nav ul,
+  .admin-layout__sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+  }
+  .admin-layout__header ul li,
+  .admin-layout__nav ul li {
+    list-style: none;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+  }
+  
+  .admin-layout__footer {
+    border-color: gold;
+  }
+  .admin-layout__footer:after, .admin-layout__footer > div {
+    background: gold;
+  }
+  
+  .admin-layout__sidebar {
+    border-color: skyblue;
+  }
+  .admin-layout__sidebar:after, .admin-layout__sidebar > div {
+    background: skyblue;
+  }
+  
+  .admin-layout__content {
+    border-color: pink;
+  }
+  .admin-layout__content:after, .admin-layout__content > div {
+    background: transparent;
+  }
+  
+  .admin-layout__nav {
+    border-color: tan;
+  }
+  .admin-layout__nav:after, .admin-layout__nav > div {
+    background: tan;
+  }
+  

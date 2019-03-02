@@ -1,0 +1,28 @@
+{
+  "name": "@react-layouts/admin",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "react-scripts start",
+    "build-examples": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build": "rimraf dist && NODE_ENV=production npx babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.4",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "^2.1.5"
+  },
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  }
+}

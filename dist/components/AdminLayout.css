@@ -1,0 +1,95 @@
+#toggle-sidebar {
+  display: none;
+}
+#toggle-sidebar
+  + section:first-of-type
+  > section:first-of-type
+  > main:first-of-type {
+  overflow-x: auto;
+}
+#toggle-sidebar
+  + section:first-of-type
+  > section:first-of-type
+  > nav:first-of-type {
+  overflow-x: auto;
+}
+#toggle-sidebar + section:first-of-type > section:first-of-type > header:empty,
+#toggle-sidebar + section:first-of-type > section:first-of-type nav:empty,
+#toggle-sidebar + section:first-of-type > section:first-of-type footer:empty,
+#toggle-sidebar + section:first-of-type > section:first-of-type header:blank,
+#toggle-sidebar + section:first-of-type > section:first-of-type nav:blank,
+#toggle-sidebar + section:first-of-type > section:first-of-type footer:blank {
+  display: none;
+}
+#toggle-sidebar + section:first-of-type > aside:first-of-type {
+  overflow-y: auto;
+}
+
+#toggle-sidebar:checked + section > section:first-of-type:before {
+  box-shadow: 200vw 0 0 rgba(0, 0, 0, 0.5);
+}
+#toggle-sidebar:checked + section > section:first-of-type:before {
+  display: block;
+}
+#toggle-sidebar:checked + section > aside:first-of-type {
+  transform: translateX(0);
+}
+
+.admin-layout--mobile
+  #toggle-sidebar
+  + section:first-of-type
+  > section:first-of-type:before,
+.admin-layout--mobile
+  #toggle-sidebar
+  + section:first-of-type
+  > section:first-of-type:after {
+  position: fixed;
+  content: "";
+  top: 0;
+}
+.admin-layout--mobile
+  #toggle-sidebar
+  + section:first-of-type
+  > section:first-of-type:before {
+  width: 300vw;
+  height: 100vh;
+  display: block;
+  right: 100vw;
+  z-index: 1;
+  box-shadow: 200vw 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.6s linear;
+  background: red;
+}
+.admin-layout--mobile
+  #toggle-sidebar
+  + section:first-of-type
+  > section:first-of-type:after {
+  display: none;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+.admin-layout--mobile
+  #toggle-sidebar
+  + section:first-of-type
+  > aside:first-of-type {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-18em);
+  -webkit-overflow-scrolling: touch;
+}
+.admin-layout--mobile
+  #toggle-sidebar:checked
+  + section
+  > section:first-of-type:before {
+  box-shadow: 200vw 0 0 rgba(0, 0, 0, 0.5);
+}
+.admin-layout--mobile
+  #toggle-sidebar:checked
+  + section
+  > section:first-of-type:before {
+  display: block;
+}
+.admin-layout--mobile #toggle-sidebar:checked + section > aside:first-of-type {
+  transform: translateX(0);
+}
