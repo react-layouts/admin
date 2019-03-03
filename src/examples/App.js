@@ -2,7 +2,11 @@ import React from "react";
 import { AdminLayout } from "../lib";
 
 function Nav(props) {
-  return <div>Nav Section - {props.message}</div>;
+  return (<div>Nav Section - {props.message}</div>);
+}
+
+function Logo() {
+  return (<div><span>🌲</span><strong>Logo</strong></div>);
 }
 
 function Sidebar() {
@@ -46,6 +50,7 @@ function App() {
     <AdminLayout
       id="layoutOne"
       message="Props are passed to layout components automatically"
+      logo={<Logo />}
       header={<span>&nbsp;Header Section</span>}
       footer={<Footer />}
       sidebar={<Sidebar />}

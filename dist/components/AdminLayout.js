@@ -5,6 +5,7 @@ import "./AdminLayout.css";
 
 function AdminLayout(props) {
   var id = props.id,
+      logo = props.logo,
       header = props.header,
       sidebar = props.sidebar,
       nav = props.nav,
@@ -20,7 +21,7 @@ function AdminLayout(props) {
       mobileSidebarWidth = _props$mobileSidebarW === void 0 ? "250px" : _props$mobileSidebarW,
       _props$breakpoint = props.breakpoint,
       breakpoint = _props$breakpoint === void 0 ? "768px" : _props$breakpoint,
-      other = _objectWithoutProperties(props, ["id", "header", "sidebar", "nav", "footer", "children", "headerHeight", "mobileHeaderHeight", "sidebarWidth", "mobileSidebarWidth", "breakpoint"]);
+      other = _objectWithoutProperties(props, ["id", "logo", "header", "sidebar", "nav", "footer", "children", "headerHeight", "mobileHeaderHeight", "sidebarWidth", "mobileSidebarWidth", "breakpoint"]);
 
   var isMobile = useMedia(["(min-width: ".concat(breakpoint, ")")], [false], true);
   var dimensions = {
@@ -78,7 +79,8 @@ function AdminLayout(props) {
     cursor: "pointer",
     display: "none"
   }, {
-    display: "inline-block"
+    display: "inline-block",
+    marginRight: '10px'
   });
   var headerStyles = rules({
     height: "".concat(dimensions.headerHeight),
@@ -92,6 +94,20 @@ function AdminLayout(props) {
     left: "0",
     zIndex: "1",
     flex: "none"
+  });
+  var headerDivStyles = rules({
+    display: 'flex',
+    alignItems: 'center'
+  }, {});
+  var logoStyles = rules({
+    display: 'flex',
+    alignItems: 'center',
+    width: "".concat(sidebarWidth),
+    height: "".concat(dimensions.headerHeight)
+  }, {
+    width: 'auto',
+    padding: '0 10px',
+    border: 'none'
   });
   return React.createElement("div", {
     id: id,
@@ -122,10 +138,17 @@ function AdminLayout(props) {
   }, React.isValidElement(sidebar) && React.cloneElement(sidebar, Object.assign({}, other))), React.createElement("header", {
     className: "admin-layout__header",
     style: headerStyles
-  }, React.createElement("div", null, React.createElement("label", {
+  }, React.createElement("div", {
+    style: headerDivStyles
+  }, React.createElement("div", {
+    className: "admin-layout__header--logo",
+    style: logoStyles
+  }, React.createElement("label", {
     htmlFor: "toggle-sidebar",
     style: toggleStyles
-  }, "\u2630"), React.isValidElement(header) && React.cloneElement(header, Object.assign({}, other))))));
+  }, "\u2630"), React.isValidElement(logo) && React.cloneElement(logo, Object.assign({}, other))), React.createElement("div", {
+    className: "admin-layout__header--nav"
+  }, React.isValidElement(header) && React.cloneElement(header, Object.assign({}, other)))))));
 }
 
 export default AdminLayout;

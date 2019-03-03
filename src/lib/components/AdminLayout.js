@@ -6,6 +6,7 @@ import "./AdminLayout.css";
 function AdminLayout(props) {
   const {
     id,
+    logo,
     header,
     sidebar,
     nav,
@@ -93,7 +94,8 @@ function AdminLayout(props) {
       display: "none"
     },
     {
-      display: "inline-block"
+      display: "inline-block",
+      marginRight: '10px'
     }
   );
 
@@ -113,6 +115,24 @@ function AdminLayout(props) {
       flex: "none"
     }
   );
+
+  let headerDivStyles = rules({
+    display: 'flex',
+    alignItems: 'center'
+  }, {
+
+  });
+
+  let logoStyles = rules({
+    display: 'flex',
+    alignItems: 'center',
+    width: `${sidebarWidth}`,
+    height: `${dimensions.headerHeight}`
+  }, {
+    width: 'auto',
+    padding: '0 10px',
+    border: 'none'
+  })
 
   return (
     <div id={id} className={`admin-layout${isMobile ? " admin-layout--mobile" : ""}`}>
@@ -134,11 +154,16 @@ function AdminLayout(props) {
           {React.isValidElement(sidebar) && React.cloneElement(sidebar, {...other})}
         </aside>
         <header className="admin-layout__header" style={headerStyles}>
-          <div>
-            <label htmlFor="toggle-sidebar" style={toggleStyles}>
-              ☰
-            </label>
-            {React.isValidElement(header) && React.cloneElement(header, {...other})}
+          <div style={headerDivStyles}>            
+            <div className="admin-layout__header--logo" style={logoStyles}>
+              <label htmlFor="toggle-sidebar" style={toggleStyles}>
+                ☰
+              </label>
+              {React.isValidElement(logo) && React.cloneElement(logo, {...other})}
+            </div>
+            <div className="admin-layout__header--nav">
+              {React.isValidElement(header) && React.cloneElement(header, {...other})}
+            </div>
           </div>
         </header>
       </section>
